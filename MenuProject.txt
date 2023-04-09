@@ -1,0 +1,59 @@
+import javax.swing.JOptionPane;
+public class Menu {
+	public static void main (String[] args){
+		String shape;
+		JOptionPane.showMessageDialog(null, "What Shape Do You Want to Draw?");
+		shape = JOptionPane.showInputDialog(null, "Enter a number between 1 to 4. \n"
+		+ "Option No.1: Triangle\n"
+		+ "Option No.2: Inverted Triangle\n"
+		+ "Option No.3: Square\n"
+		+ "Option No.4: Exit");
+		
+		switch (shape) {
+		case "1":
+			No_1(args);
+			break;
+		case "2":
+			No_2(args);
+			break;
+		case "3":
+			No_3(args);
+			break;
+		case "4":
+			No_4(args);
+			break;
+		}
+} 
+	public static void No_1 (String[] args){
+		String Output = "";
+		int No_lines = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the height for triangle"));
+		 for(int i=1;i <= No_lines;i++){
+	         for(int j=0;j<i;j++){		
+	        	 Output += "+" ;	        	
+}		 Output += "\n";	      
+	}  JOptionPane.showMessageDialog(null,Output);
+		}
+	public static void No_2 (String[] args){
+		String Output = "";
+		int No_lines = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the height for inverted triangle"));
+		for(int i=0;i <= No_lines;i++){
+			for(int j = No_lines;j>i;j--){		
+				 Output += "+" ;
+}
+			 Output += "\n";
+	} JOptionPane.showMessageDialog(null,Output);
+		}
+	public static void No_3 (String[] args){
+		String Output = "";
+		int No_lines = Integer.parseInt(JOptionPane.showInputDialog(null, "Enter the size for the square"));
+		for ( int i =1; i <= No_lines; i++ ){
+			for ( int j=0; j<= No_lines; j++) {
+				Output += "+  " ;
+			}
+			Output += "\n";
+		}JOptionPane.showMessageDialog(null,Output);
+	}
+	public static void No_4 (String[] args){
+		JOptionPane.showMessageDialog(null, "Exiting...");		
+	}
+}

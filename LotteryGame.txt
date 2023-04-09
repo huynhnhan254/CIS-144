@@ -1,0 +1,44 @@
+import java.util.Arrays;
+import java.util.Scanner;
+public class LotteryGame {
+	public static void main (String[] args){
+		int[] userArray = new int [5];					// create array for input
+		Scanner inputArray = new Scanner(System.in);
+		System.out.print("Enter your numbers: ");
+		for (int a = 0; a < 5; a++ ) {
+			userArray[a] = inputArray.nextInt();
+			} 	
+		System.out.println("Lottery Array:");			//array for lottery
+		int[] Lottery = new int[5];
+		int random_Number;
+		for (int i = 0; i<= 4; i++) {					//create random number
+			random_Number = (int) (Math.random() * 9);			
+			for (int j = 0; j < i; j++) {	
+				if (Lottery[j] == random_Number) {		//make sure there is no duplicate number
+				random_Number = (int) (Math.random() * 9);
+				j = -1;									//
+			}
+				}
+			Lottery [i] = random_Number;	
+			System.out.print(Lottery [i] + " ");		//output lottery
+			}	
+			System.out.println();		
+		System.out.println("User Array:");				//output user array
+		for (int a = 0; a < 5; a++ ) {
+			System.out.print(userArray[a] + " ");
+			}
+		System.out.println();
+		int count = 0;							//count the same number
+		for (int i = 0; i < 5; i++) {			//compare elements
+		if (userArray [i] == Lottery [i]) {
+			int sameNumber = i;	
+			count++;
+			System.out.println( "The same number is the element "+ sameNumber );	
+		} 
+		} if (count >= 1) {
+			System.out.println("There are " + count + " numbers were the same");
+		}else {
+			System.out.println("No number is the same.");
+		}
+} 
+}

@@ -1,0 +1,132 @@
+import java.util.Scanner;
+public class Saving {		
+	private static double balance; 	//instance variable
+	public static void main (String[] args){
+		double startBalance = 10000; 		//set amount in beginning balance
+		char exit = 'n';					//set loop for menu
+		String input = null;				//use for menu loop
+		String username = "asd";		//set ID 
+		String password = "123";		//set password
+		Scanner inputID = new Scanner(System.in);	
+		System.out.print("Username: ");		
+		String userName = inputID.nextLine();		
+		System.out.print("Password: ");
+		String pass = inputID.nextLine();
+		
+		Account(userName, username, pass, password);
+		
+		Scanner option = new Scanner(System.in);
+		//Start menu
+		while (exit != 'y') {
+		System.out.println("1. Balance \n"
+				+ "2. Withdrawal \n"
+				+ "3. Deposit\n"
+				+ "4: Interest Accrued \n"
+				+ "5 Exit");
+		String Menu = option.nextLine();
+		switch(Menu) {
+		case "1":		
+			Balance(userName, username, pass, password, startBalance);
+			break;
+		case "2":		
+			Withdrawals(startBalance, input, exit);
+			break;
+		case "3":		
+			Deposit(startBalance);
+			break;
+		case "4":		
+			InterestAccrued(startBalance);
+			break;
+		case "5":		
+			Exit();
+		default:				//deny others access
+			System.out.println("ERROR ENTRY!!! TRY AGAIN");
+			break;
+		}
+		Scanner inputMenu = new Scanner(System.in);
+		System.out.println("Would You Like to Exit(y/n)?: ");
+		input = inputMenu.next().toLowerCase();			//Lowercase access char
+		exit = input.charAt(0);							//Just count the first letter
+		} 
+	}
+	public static void Account(String a, String b, String c, String d) {     
+		Scanner inputID = new Scanner(System.in);
+		int count = 1;
+		//allow total 5 times to access
+				for (count = 1; count <= 4 & (!a.equals(b) | !c.equals(d)) ; count++) { 
+				//deny access if it's wrong ID or password
+					if ((!a.equals(b) | !c.equals(d))){			
+						System.out.println("Invalid ID or Password!!!");
+						System.out.println("Username: ");
+						a = inputID.nextLine();
+						System.out.print("Password: ");
+						c = inputID.nextLine();
+				//if type wrong more than 5 times, it would be block		
+					}if(count > 3 & (!a.equals(b) | !c.equals(d)) ){		
+						System.out.println("You Have Been Blocked!!!");
+						System.out.println("Contact to Your Bank to Unlock");
+					}
+				// access the account
+				}if (a.equals(b) && c.equals(d)) {		
+					System.out.println("You're logged in...");
+				}
+	}
+	public static void Balance(String a, String b, String c, String d, double e) {	 
+		//access Account to see balance
+		if (a.equals(b) && c.equals(d)) {
+		e = balance;
+		balance = e;
+		System.out.println("Your Balance: $"+ balance );
+	}}
+	public static void Withdrawals(double a, String b, char c) {					
+		String input;
+		char exit = 'n';
+		Scanner Withdrawals = new Scanner(System.in);
+		//enter amount withdrawal
+		while(exit != 'y') {
+		System.out.println("Enter Amount Withdrawals: ");
+		double amountWTH = Withdrawals.nextDouble();
+		//deny amountWTH > balance
+		if (amountWTH > a) {
+			System.out.println("Insufficient Funds");
+			System.out.println("Would You Like to Go Back(y/n)?: ");
+			input = Withdrawals.next().toLowerCase();
+			exit = input.charAt(0);
+		//deny negative amount
+		}if(amountWTH < 0) {
+			System.out.println("Negative Entries Are Not Allowed");
+			System.out.println("Would You Like to Go Back(y/n)?: ");
+			input = Withdrawals.next().toLowerCase();
+			exit = input.charAt(0);
+		}else {			//Accept valid amount			
+			System.out.println("Withdrawal Succeed");
+			balance = a - amountWTH;
+			a = balance;
+			System.out.println("Would You Like to Go Back(y/n)?: ");
+			input = Withdrawals.next().toLowerCase();
+			exit = input.charAt(0);
+		}
+		}
+	}
+	public static void Deposit(double a) {
+		Scanner inputDeposit = new Scanner(System.in);	
+		System.out.print("Amount Deposit: ");	
+		double amount = inputDeposit.nextDouble();
+		balance = amount + a;
+		a = balance;
+	}
+	public static void InterestAccrued (double a) {
+		double amount;				//interest result
+		double rate = 0.01;			//fixed 1% rate
+		double time;				//time period
+		Scanner Interest = new Scanner(System.in);
+		System.out.println("Enter the Time Period (month): ");
+		time = Interest.nextDouble();
+		//calculate the result 
+		amount = a * rate * (time/12);
+		System.out.println("The Interest Accrued: "+ amount);
+	}
+	public static void Exit() {
+		System.out.println("Exting...");
+	}
+}

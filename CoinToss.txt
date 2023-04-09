@@ -1,0 +1,32 @@
+import java.util.Scanner;
+public class CoinToss {
+	enum Coin {Head, Tail};
+	public static void main (String[] args){
+		int countHead = 0;					//count total Head
+		int countTail = 0;					//count total Tail	
+		Coin flipCoin;
+		Scanner inputTimes = new Scanner(System.in);
+		System.out.println("How many times you want to flip? ");	
+		int n = inputTimes.nextInt();		
+		for (int i = 1; i <= n; i++) {
+			int random_Num = (int) (Math.random() * 2) + 1;
+			if (random_Num == 1) {			//assign 1 to Head
+				flipCoin = Coin.Head;
+				System.out.println(flipCoin);
+				countHead++;				
+			}else {					//assign 2 to Tail
+				flipCoin = Coin.Tail;
+				System.out.println(flipCoin);
+				countTail++;
+			}
+		}
+		System.out.println("Total are "+ countHead + " Heads and " + countTail + " Tails");   //output total heads and tails	
+		if (countHead > countTail) {																				//output who win
+			System.out.println("HEAD WIN");
+		}else if(countHead < countTail){
+			System.out.println("TAIL WIN");
+		}else {
+			System.out.println("DRAW!!! IT IS A TIE");
+		}		
+		}		
+	}
