@@ -1,0 +1,28 @@
+import java.util.Scanner;
+public class GuessNumberGame {
+	public static void main (String[] args){
+		 int Random = (int) Math.round(Math.random() * 20); 			//output a random number from 0 to 20.
+			int Guess;											
+			int count;
+			
+			System.out.println("You Have 10 Attempts");	
+			Scanner inputDevice = new Scanner(System.in);			// read users' input
+			System.out.print("Guess a Number (0-20): ");			// 1st attempt.
+			Guess = inputDevice.nextInt();	
+			
+			for (count = 1; count <= 9 & Guess != Random ; count++) { 	// plus 9 attempts, so total is 10 attempts.	
+				if (Guess > 20 | Guess <0) {										// input must be from 0 t 20.
+					System.out.print("ERROR!!! The number is from 0 to 20 (" + (10-count) +" attempts left): ");	
+					Guess = inputDevice.nextInt();	
+				}else {
+				System.out.print("Try again! You still have " + (10-count) + " attempts left: ");
+				Guess = inputDevice.nextInt();}
+				if (count > 8 & Guess != Random ) {			// output the message when out of attempts.
+					System.out.println("Out of All Attempts!!! YOU LOSE");
+				}
+			}
+			if (Guess == Random) {			
+				System.out.println("Congratulation! You Win in " + count + " Tries");	
+			}
+	}
+}

@@ -1,0 +1,28 @@
+import java.util.Scanner;
+public class Wage {
+	public static void main (String[] args){
+		String first_name;
+		String last_name;
+		String SSN;
+		double total_hours;
+		double hourly = 15.0;
+		
+		Scanner inputDevice = new Scanner(System.in);
+		System.out.print("Please Enter Your First Name: ");
+		first_name = inputDevice.nextLine();
+		System.out.print("Please Enter Your Last Name: ");
+		last_name = inputDevice.nextLine();
+		System.out.print("Please Enter Your Social Security Number: ");
+		SSN = inputDevice.nextLine();
+		System.out.print("Please Enter Your Weekly Hours Worked: ");
+		total_hours = inputDevice.nextDouble();
+		double Biweekly = total_hours * hourly * 2;
+		double Monthly = Biweekly * 2;
+		double Yearly = Biweekly * 48;
+				
+		System.out.println(first_name + " " + last_name + " (" + SSN + ")");
+		System.out.println("Biweekly Pay: $" + Math.round(Biweekly * 100.0) / 100.0);
+		System.out.println("Monthly Pay: $" + Math.round(Monthly * 100.0) / 100.0);
+		System.out.println("Yearly Pay: $"  + Math.round(Yearly * 100.0) / 100.0);
+} 
+	}
